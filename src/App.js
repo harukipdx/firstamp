@@ -31,7 +31,7 @@ const App = ({ signOut }) => {
     await Promise.all(
       notesFromAPI.map(async (note) => {
         if (note.image) {
-          const urs = await Storage.get(note.name);
+          const url = await Storage.get(note.name);
           note.image = url;
         }
         return note;
@@ -69,16 +69,15 @@ const App = ({ signOut }) => {
   }
 
   return (
-    <View
-      name = "image"
-      as="input"
-      type="file"
-      syle={{ alignSelf: "end" }}
-      />
-    <View className="App">
+      <View className="App">
       <Heading level={1}>My Notes App</Heading>
       <View as="form" margin="3rem 0" onSubmit={createNote}>
         <Flex direction="row" justifyContent="center">
+          <input
+            name='image'
+            type='file'
+            style={{ alignSelf: "end", marginBottom: "1rem"}}
+            />
           <TextField
             name="name"
             placeholder="Note Name"
@@ -114,10 +113,10 @@ const App = ({ signOut }) => {
             </Text>
             <Text as="span">{note.description}</Text>
             {note.image && (
-              <image
+              <Image
                 src={note.image}
                 alt={'visual aid for ${notes.name'}
-                syle ={{ width: 400 }}
+                style ={{ width: 400 }}
                 />
             )}
             <Button variation="link" onClick={() => deleteNote(note)}>
