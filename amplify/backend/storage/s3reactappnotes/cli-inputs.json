@@ -1,0 +1,14 @@
+{
+  "resourceName": "s3reactappnotes",
+  "policyUUID": "3efed2a1",
+  "bucketName": "s3notesbucket",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
